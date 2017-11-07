@@ -14,80 +14,6 @@
 ;; Write a function to print this out in a spiral
 ;; Ex: 1,2,3,4,8,12,16,15,14,13,9,5,6...
 
-(defn spiral [data] (if (= (* (count data) (count (first data))) (count (digits data))) (digits data) (recur (middle data))))
-
-(spiral Datas)
-;=> (10 11 6 7)
-
-; This function returns the innermost block.
-
-(last (first (rest (butlast Datas))))
-;=> 8
-
-(last (first (rest (rest (butlast Datas)))))
-;=> 12
-
-(reverse (last Datas))
-;=> (16 15 14 13)
-
-(first (first (reverse (rest (butlast Datas)))))
-;=> 9
-
-(first (first (rest (reverse (rest (butlast Datas))))))
-;=> 5
-
-(rest (butlast (first (next (butlast Datas)))))
-;=> (6 7)
-
-(rest (butlast (last (next (rest (butlast Datas))))))
-;=> (10 11)
-
-
-(defn spiral [n]
-    
-    ;; print first line
-    (println (first n))
-    ;; is it the last line? 
-    ;(while (=))
-    ;(count n)(last second Datas)
-    ;;if not,
-    ;; print last item of next line
-    (while ())
-        (println (last (first (rest n))))
-    )
-
-  ;;do this until last line, then
-    ;; print last line backwards
-    )
-
-(spiral Datas)
-
-;print last of first of rest until second to last row (going down)
-; print last row backwards
-; print first of second to last row until second row (going up)
-;   
-
-
-
-;(defn spiral [n]
-;    (let [f (first n) l (last n)])
-;    (if (=  (count (rest n)
-;    (recur rest n)
-;    
-;    ;; read and drop line
-;                   
-;    ;; read and drop right
-;                   
-;    ;;
-;    
-;    (if (= 1 (count n))
-;        (reverse n)
-;        (last n)
-;        ))
-;(first Datas)
-;(rest  Datas)
-;(last Datas)
-
 ; We are going to get rid of the first and last rows,
 ; and deal with them later.
 
@@ -102,18 +28,12 @@
 ; last item of first row,
 ; last item of next row, until all rows are done.
 ; first item of last row, first of next to last row, until the first.
-
 ; that much should establish our loop, because we're now
 ; back where we started, at the top left on 5.
 ; so we go back to the beginning, the first step -
-
 ; to drop the first and last row, which at this point is [6 7 10 11].
-
 ; we are done, because...
 ; there are no more rows.
-
-; more succinctly:
-
 
 ; take first row:
 
@@ -197,7 +117,6 @@ and
 (rest (butlast (last (next (rest (butlast Datas))))))
 ;=> (10 11)
 
-
 ;; Now putting it together:
 
 (def spiral-1 (conj (conj (first Datas) (last (first (rest (butlast Datas)))))(last (first (rest (rest (butlast Datas)))))))
@@ -217,7 +136,7 @@ spiral-1
 (into [(first (first (reverse (rest (butlast Datas))))) (first (first (rest (reverse (rest (butlast Datas))))))] (into (reverse (rest (butlast (last (next (rest (butlast Datas))))))) (reverse (rest (butlast (first (next (butlast Datas))))))))
 ;=> [9 5 6 7 11 10]
 
-; A working solution, but isn't recusive and will only work on 
+; A working solution, but isn't recursive and will only work on 
 ; a dataset of the same size.
 
 (into (into (conj (conj
@@ -234,7 +153,6 @@ spiral-1
 ; Create loops to extend this pattern.
 
 ; Consider the shape of the data.
-
 
 (def Datas [
                [1   2  3  4]
@@ -287,15 +205,6 @@ but not necessarily square, that is, it may be rectangular.
     (rest (get-bottom data)))
     (rest (butlast (get-left data)))))
 
-(defn digits2 [data]
-  (into
-    (into
-      (into
-        (get-right (rest data))
-        (get-top data))
-    (rest (get-bottom data)))
-    (rest (butlast (get-left data)))))
-
 ; we'll check if there's more after we've done a complete square.
 
 (digits Datas)
@@ -323,19 +232,15 @@ but not necessarily square, that is, it may be rectangular.
 
 ; These 4 functions define the spiral pattern.
 ; Each one will be fed the appropriate data.
-
 ; After the first step removes the top, it will return the rest
 ; as input to the top function.
-
 ; at every step we need to test if we are done.
-
 ; this one works for the first one:
 
 (defn is-more? [data] (if (next data) true false))
 
 ; Implementing these functions:
-
-; Begin by passing the coll to get-top. It should return
+; Begin by passing the coll to get-top.
 
 ; Now let's try it with this:
 
@@ -359,13 +264,6 @@ but not necessarily square, that is, it may be rectangular.
 ;    16 24 32 40 48 56
 ;    64 63 62 61 60 59 58 57
 ;    49 41 33 25 17 9]
-
-; And we can see that it checks out.
-; going on -
-
-; 10 11 12 13 14 15
-; 23 31 39 47 55
-; 54 53 52
 
 ; come to think of it, we could avoid going through these operations
 ; by simply rotating the whole structure counterclockwise.
@@ -439,3 +337,35 @@ but not necessarily square, that is, it may be rectangular.
 1 2 3 4 5 6 7 8 16 24 32 40 48 56 64 63 62 61 60 59 58 57 49 41 33 25 17 9 ....
 
 ; Looks right!
+
+; ****************************************
+
+; WOW! That was a lot of work, but the final solution is quite elegant.
+; Let's review it here so we can see the entire thing:
+
+(def big-data [
+              [1  2  3  4  5  6  7  8]
+              [9  10 11 12 13 14 15 16]
+              [17 18 19 20 21 22 23 24]
+              [25 26 27 28 29 30 31 32]
+              [33 34 35 36 37 38 39 40]
+              [41 42 43 44 45 46 47 48]
+              [49 50 51 52 53 54 55 56]
+              [57 58 59 60 61 62 63 64]])
+
+(defn spiral [data]
+  (loop [x data spiral []]  
+    (if (next x)
+        (recur (reverse (apply mapv vector (rest x)))
+               (into spiral (first x)))
+        spiral)))
+(spiral big-data)
+
+[1 2 3 4 5 6 7 8
+16 24 32 40 48 56
+64 63 62 61 60 59 58 57
+49 41 33 25 17
+9 10 11 12 13 14 15
+23 31 39 47 55 54 53 52 51 50
+42 34 26 18 19 20 21 22
+30 38 46 45 44 43 35 27 28 29 37]
