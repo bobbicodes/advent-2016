@@ -28,7 +28,9 @@ and will create a tree structure that our program can use:
   [:word "z"]
   [:word "y"]
   [:word "x"]]
+  
   [:id "123"]
+  
   [:checksum "[" [:word "abxyz"] "]"]]
 
 
