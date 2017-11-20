@@ -22,6 +22,7 @@ This context free grammar describes a hyphenated key followed by a number follow
 and will create a tree structure that our program can use:
 
   (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
+  
   => [:room [:key [:word "aaaaa"]
   [:word "bbb"]
   [:word "z"]
