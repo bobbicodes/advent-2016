@@ -28,8 +28,7 @@ This is how we represent that in EBNF notation... In Clojure!:
     
 And we get our magical tree! Ooowee!
   
-    => [:room [:key
-    [:word "aaaaa"] [:word "bbb"] [:word "z"] [:word "y"] [:word "x"]]
+    => [:room [:key [:word "aaaaa"] [:word "bbb"] [:word "z"] [:word "y"] [:word "x"]]
     [:id "123"]
     [:checksum [:word "abxyz"]]]
 
