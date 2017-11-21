@@ -22,11 +22,11 @@ This is how we represent that in EBNF notation... In Clojure!:
         checksum = <'['> word <']'>
         id = #'[0-9]+'"))
         
-  Now we pass the input to our shiny-new parser:
+ Now we pass the input to our shiny-new parser:
 
     (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
     
-And we get our magical tree! OOOwee!
+And we get our magical tree! Ooowee!
   
     => [:room [:key
     [:word "aaaaa"] [:word "bbb"] [:word "z"] [:word "y"] [:word "x"]]
