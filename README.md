@@ -33,3 +33,4 @@ And we get our magical tree! Ooowee!
     [:checksum [:word "abxyz"]]]
 
 We can even make a pretty little chart using rhizome and graphviz! Oooweee!
+![room](https://github.com/sdfwer124/interview-problems/blob/master/room.png)
