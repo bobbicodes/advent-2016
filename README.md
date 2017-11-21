@@ -72,4 +72,4 @@ Now we'll express the relevant data in EBNF notation:
   
     (insta/visualize (bot-parser bots))
     
-![bots] (https://github.com/sdfwer124/interview-problems/blob/master/src/advent/bots.png)
+![bots](https://github.com/sdfwer124/interview-problems/blob/master/src/advent/bots.png)
