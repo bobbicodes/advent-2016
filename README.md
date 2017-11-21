@@ -1,6 +1,6 @@
 # interview-problems
 
-In the process of preparing solutions for Advent of Code 2016 problems 1, 4 and 10 for interview with Apple.
+In the process of preparing solutions for Advent of Code 2016 problems 1, 4 and 10.
 
 Since they all begin with parsing some kind of input data, I have decided this will be a perfect job for [Instaparse](https://github.com/Engelberg/instaparse). 
 
@@ -32,6 +32,3 @@ and will create a tree structure that our program can use:
   [:id "123"]
   
   [:checksum "[" [:word "abxyz"] "]"]]
-
-
-My complete ramblings are recorded in my [blog](https://crjunkie.blogspot.com/2017/11/my-interview-for-apple.html).
