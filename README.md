@@ -2,24 +2,21 @@
 
 In the process of preparing solutions for Advent of Code 2016 problems 1, 4 and 10.
 
-Since they all begin with parsing some kind of input data, I have decided this will be a perfect job for [Instaparse](https://github.com/Engelberg/instaparse). 
+Since they all involve parsing some kind of input data, this will be a perfect job for ... [Instaparse](https://github.com/Engelberg/instaparse)!
 
-For example, here is our parser for the day 4 problem.
-Each room is represented as a string:
+We use EBNF notation to generate a tree-like structure. For example, here is our parser for the day 4 problem.
+Each room is represented as a key, id and checksum:
 
 "aaaaa-bbb-z-y-x-123[abxyz]"
 
   (def room-parser
     (insta/parser
       "room = key id checksum
-      key = (word <separator>)+
-      <separator> = '-'
+      key = (word < separator >)+
+      < separator > = '-'
       word = #'[a-zA-Z]+'
       checksum = '[' word ']'
       id = #'[0-9]+'"))
-     
-This context free grammar describes a hyphenated key followed by a number followed by a bracketed checksum,
-and will create a tree structure that our program can use:
 
   (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
   
@@ -28,7 +25,5 @@ and will create a tree structure that our program can use:
   [:word "z"]
   [:word "y"]
   [:word "x"]]
-  
   [:id "123"]
-  
   [:checksum "[" [:word "abxyz"] "]"]]
