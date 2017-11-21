@@ -20,8 +20,12 @@ The id is a string of numbers, and the checksum is a string of letters in bracke
         word = #'[a-zA-Z]+'
         checksum = '[' word ']'
         id = #'[0-9]+'"))
+        
+  Now we pass it our input string:
 
     (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
+    
+And we get our tree!
   
     => [:room [:key [:word "aaaaa"]
     [:word "bbb"]
@@ -30,3 +34,5 @@ The id is a string of numbers, and the checksum is a string of letters in bracke
     [:word "x"]]
     [:id "123"]
     [:checksum "[" [:word "abxyz"] "]"]]
+
+We can even make a pretty little chart!
