@@ -4,7 +4,7 @@ Since they all involve parsing some kind of input data, this will be a job for .
 
 With it we can use a context-free grammar to generate a tree-like structure from our data.
 
-For example, here an input string for the day 4 problem. Each room is represented as a key, id and checksum:
+For example, here's an input string for the day 4 problem. Each room is represented as a key, id and checksum:
 
     aaaaa-bbb-z-y-x-123[abxyz]
 
