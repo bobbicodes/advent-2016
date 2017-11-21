@@ -3,6 +3,7 @@
 Solutions for Advent of Code 2016 problems.
 
 Since they all involve parsing some kind of input data, this will be a job for ... [Instaparse](https://github.com/Engelberg/instaparse)!
+
 With it we can use a context-free grammar to generate a tree-like structure.
 
 For example, here is our parser for the day 4 problem.
