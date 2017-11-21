@@ -20,7 +20,7 @@ This is how we represent that in EBNF notation... In Clojure!:
         key = (word <separator>)+
         <separator> = '-'
         word = #'[a-zA-Z]+'
-        checksum = '[' word ']'
+        checksum = <'['> word <']'>
         id = #'[0-9]+'"))
         
   Now we pass it our input string:
@@ -29,12 +29,9 @@ This is how we represent that in EBNF notation... In Clojure!:
     
 And we get our tree!
   
-    => [:room [:key [:word "aaaaa"]
-    [:word "bbb"]
-    [:word "z"]
-    [:word "y"]
-    [:word "x"]]
+    => [:room [:key
+    [:word "aaaaa"] [:word "bbb"] [:word "z"] [:word "y"] [:word "x"]]
     [:id "123"]
-    [:checksum "[" [:word "abxyz"] "]"]]
+    [:checksum [:word "abxyz"]]]
 
 We can even make a pretty little chart using rhizome and graphviz! Oooweee!
