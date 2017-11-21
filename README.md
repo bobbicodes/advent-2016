@@ -4,7 +4,7 @@ Since they all involve parsing some kind of input data, this will be a job for .
 
 With it we can use a context-free grammar to generate a tree-like structure.
 
-For example, here is our parser for the day 4 problem.
+For example, here an input string for the day 4 problem.
 Each room is represented as a key, id and checksum:
 
     aaaaa-bbb-z-y-x-123[abxyz]
@@ -22,7 +22,7 @@ This is how we represent that in EBNF notation... In Clojure!:
         checksum = <'['> word <']'>
         id = #'[0-9]+'"))
         
-  Now we pass it our input string:
+  Now we pass the input to our shiny-new parser:
 
     (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
     
