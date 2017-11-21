@@ -2,7 +2,7 @@
 
 Since they all involve parsing some kind of input data, this will be a job for ... [Instaparse](https://github.com/Engelberg/instaparse)!
 
-With it we can use a context-free grammar to generate a tree-like structure.
+With it we can use a [context-free grammar] (https://en.wikipedia.org/wiki/Context-free_grammar)  to generate a tree-like structure.
 
 For example, here an input string for the day 4 problem.
 Each room is represented as a key, id and checksum:
