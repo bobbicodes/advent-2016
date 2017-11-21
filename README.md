@@ -4,6 +4,8 @@ Since they all involve parsing some kind of input data, this will be a job for .
 
 With it we can use a context-free grammar to generate a tree-like structure from our data.
 
+### Day 4
+
 For example, here's an input string for the day 4 problem. Each room is represented as a key, id and checksum:
 
     aaaaa-bbb-z-y-x-123[abxyz]
@@ -37,8 +39,9 @@ We can even make a pretty little chart using [rhizome](github.com/ztellman/rhizo
 
 ![room](https://github.com/sdfwer124/interview-problems/blob/master/room.png)
 
-Let's do another one!
+### Day 10
 
+Let's do another one!
 Day 10 we are programming robots.
 
 The input data consists of instructions like this:
