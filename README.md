@@ -31,7 +31,7 @@ And we get our magical tree! Ooowee!
     [:id "123"]
     [:checksum [:word "abxyz"]]]
 
-We can even make a pretty little chart using rhizome and graphviz! Oooweee!
+We can even make a pretty little chart using [rhizome](github.com/ztellman/rhizome) and [graphviz](www.graphviz.org/)! Oooweee!
 
     (insta/visualize  (room-parser "aaaaa-bbb-z-y-x-123[abxyz]"))
 
