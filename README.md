@@ -12,7 +12,7 @@ For example, here's an input string for the day 4 problem. Each room is represen
 
 The key is made of one or more strings of letters separated with hyphens.
 The id is a string of numbers, and the checksum is a string of letters in brackets.
-This is how we represent that in EBNF notation... In Clojure!:
+This is how we represent that in [EBNF notation](en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form)... In Clojure!:
   
     (def room-parser
       (insta/parser
