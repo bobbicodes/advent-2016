@@ -69,7 +69,7 @@ Now we'll express the relevant data in EBNF notation:
          id = #'[0-9]+'"))
          
   Each transaction performed by the bots is represented as a "handoff".
-  A handoff can involve any number of bots, a transmitter followed by one or more receivers.
+  A handoff is a messenger bot followed by one or more receiver bots.
   
   Let's use this parser to visualize this transaction:
   
