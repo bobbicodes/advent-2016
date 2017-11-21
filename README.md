@@ -33,4 +33,7 @@ And we get our magical tree! Ooowee!
     [:checksum [:word "abxyz"]]]
 
 We can even make a pretty little chart using rhizome and graphviz! Oooweee!
+
+    (insta/visualize  (room-parser "aaaaa-bbb-z-y-x-123[abxyz]"))
+
 ![room](https://github.com/sdfwer124/interview-problems/blob/master/room.png)
