@@ -26,7 +26,7 @@ This is how we represent that in EBNF notation... In Clojure!:
 
     (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
     
-And we get our tree!
+And we get our magical tree! OOOwee!
   
     => [:room [:key
     [:word "aaaaa"] [:word "bbb"] [:word "z"] [:word "y"] [:word "x"]]
