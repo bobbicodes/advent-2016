@@ -1,6 +1,4 @@
-# interview-problems
-
-Solutions for Advent of Code 2016 problems.
+# Advent of Code 2016 problems
 
 Since they all involve parsing some kind of input data, this will be a job for ... [Instaparse](https://github.com/Engelberg/instaparse)!
 
