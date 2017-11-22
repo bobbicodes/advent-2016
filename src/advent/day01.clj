@@ -21,14 +21,14 @@
 
 (def step-parser
   (insta/parser
-    "step = (direction steps)+
-     direction = #'[a-zA-Z]+'
-     steps = #'[0-9]+' ', '?"))
+    "<step> = (direction steps)+
+     <direction> = #'[a-zA-Z]+'
+     <steps> = #'[0-9]+' <', '?>"))
 
 ; This produces the following data structure:
 
 (step-parser steps)
-;=> [:step [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "4" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "1" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "1" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "5" ", "] [:direction "R"] [:steps "5" ", "] [:direction "R"] [:steps "5" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "1" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "1" ", "] [:direction "R"] [:steps "3" ", "] [:direction "L"] [:steps "5" ", "] [:direction "R"] [:steps "187" ", "] [:direction "R"] [:steps "1" ", "] [:direction "R"] [:steps "4" ", "] [:direction "L"] [:steps "1" ", "] [:direction "R"] [:steps "5" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "50" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "70" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "3" ", "] [:direction "R"] [:steps "194" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "5" ", "] [:direction "L"] [:steps "1" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "1" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "4" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "4" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "5" ", "] [:direction "R"] [:steps "5" ", "] [:direction "R"] [:steps "3" ", "] [:direction "R"] [:steps "5" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "4" ", "] [:direction "L"] [:steps "1" ", "] [:direction "R"] [:steps "3" ", "] [:direction "R"] [:steps "1" ", "] [:direction "L"] [:steps "1" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "3" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "5" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "5" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "5" ", "] [:direction "R"] [:steps "1" ", "] [:direction "R"] [:steps "2" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "1" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "3" ", "] [:direction "R"] [:steps "1" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "1" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "5" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "3" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "4" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "1" ", "] [:direction "R"] [:steps "1" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "2" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "3" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "1" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "3" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "3" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "1" ", "] [:direction "L"] [:steps "4" ", "] [:direction "R"] [:steps "4" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "4" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "1" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "5" ", "] [:direction "L"] [:steps "2" ", "] [:direction "L"] [:steps "3" ", "] [:direction "R"] [:steps "2" ", "] [:direction "L"] [:steps "2"]]
+;=> ("R" "2" "L" "3" "R" "2" "R" "4" "L" "2" "L" "1" "R" "2" "R" "4" "R" "1" "L" "4" "L" "5" "R" "5" "R" "5" "R" "2" "R" "2" "R" "1" "L" "2" "L" "3" "L" "2" "L" "1" "R" "3" "L" "5" "R" "187" "R" "1" "R" "4" "L" "1" "R" "5" "L" "3" "L" "4" "R" "50" "L" "4" "R" "2" "R" "70" "L" "3" "L" "2" "R" "4" "R" "3" "R" "194" "L" "3" "L" "4" "L" "4" "L" "3" "L" "4" "R" "4" "R" "5" "L" "1" "L" "5" "L" "4" "R" "1" "L" "2" "R" "4" "L" "5" "L" "3" "R" "4" "L" "5" "L" "5" "R" "5" "R" "3" "R" "5" "L" "2" "L" "4" "R" "4" "L" "1" "R" "3" "R" "1" "L" "1" "L" "2" "R" "2" "R" "2" "L" "3" "R" "3" "R" "2" "R" "5" "R" "2" "R" "5" "L" "3" "R" "2" "L" "5" "R" "1" "R" "2" "R" "2" "L" "4" "L" "5" "L" "1" "L" "4" "R" "4" "R" "3" "R" "1" "R" "2" "L" "1" "L" "2" "R" "4" "R" "5" "L" "2" "R" "3" "L" "4" "L" "5" "L" "5" "L" "4" "R" "4" "L" "2" "R" "1" "R" "1" "L" "2" "L" "3" "L" "2" "R" "2" "L" "4" "R" "3" "R" "2" "L" "1" "L" "3" "L" "2" "L" "4" "L" "4" "R" "2" "L" "3" "L" "3" "R" "2" "L" "4" "L" "3" "R" "4" "R" "3" "L" "2" "L" "1" "L" "4" "R" "4" "R" "2" "L" "4" "L" "4" "L" "5" "L" "1" "R" "2" "L" "5" "L" "2" "L" "3" "R" "2" "L" "2")
 
 ; as we walk the seq, we change direction depending on the first item, and change the appropriate coordinate based on the second item, the number.
 ; We start facing north. this will be 1.
@@ -55,3 +55,61 @@
          (map vector u v))))
 (bunny [0 0] [-123 -123])
 ;=> 246
+
+; The output from our parser is a seq of alternating turns and steps. We will pop them off 2 at a time to modify a set of coordinates according to their values.
+
+; Our direction begins at 1 which is north. 
+; Our coordinates are [0 0].
+; Our first instruction is ("R" "2"),
+; which means our current direction (1) becomes 2.
+; when our direction is 2, our steps increment x,
+; so [0 0] becomes [2 0].
+
+; (remember:)
+; 1 - north, increment y
+; 2 - east, increment x
+; 3 - south, decrement y
+; 4 - west, decrement x
+
+; We will create a loop with local bindings for
+; direction d and location l.
+
+(loop [d 1 l [0 0]])
+
+; first thing we grab is an "R", so we inc d.
+
+(if (= x "R")
+    (inc d)
+    (dec d))
+
+; then we receive a "2", so first we need to convert it into an integer.
+
+
+
+; since d is at 2, we inc the x of l by (read-string "2")
+
+; Let's write out our movements as functions:
+
+; it will take a vector of coordinates and a number
+
+(defn go-north [l n]
+  (vector (first l)
+          (+ n (last l))))
+(defn go-east [l n]
+  (vector (+ n (first l))
+          (last l)))
+(defn go-south [l n]
+  (vector (first l)
+          (- (last l) n)))
+(defn go-west [l n]
+  (vector (- (first l) n)
+          (last l)))
+
+; Great! Each func modifies the coordinates appropriately.
+
+; we pull a number from the directions, adjust d, modulo 4 and call one of the above, just a 4-way spinner.
+(defn step [l n d]
+  (cond (= d 1) (go-north l n)
+        (= d 2) (go-east l n)
+        (= d 3) (go-south l n)
+        (= d 4) (go-west l n)))
