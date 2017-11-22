@@ -1,4 +1,4 @@
-(ns day04.core
+(ns advent.core
   (:require
    [clojure.java.io :as io]
    [instaparse.core :as insta]))
@@ -11,12 +11,13 @@ aaaaa-bbb-z-y-x-123[abxyz]
 
 (def room-parser
   (insta/parser
-    "room = key id checksum
+    "rooms = (key id checksum)+
     key = (word <separator>)+
     <separator> = '-'
     word = #'[a-zA-Z]+'
-    checksum = <'['> word <']'>
+    checksum = <'['> word <']'> #'[\\n]'?
     id = #'[0-9]+'"))
+
 ;Now we pass the input to our shiny-new parser:
 
 (room-parser "aaaaa-bbb-z-y-x-123[abxyz]")
@@ -28,4 +29,8 @@ aaaaa-bbb-z-y-x-123[abxyz]
 
 ;We can even make a pretty little chart using rhizome and graphviz! Oooweee!
 
-(insta/visualize  (room-parser "aaaaa-bbb-z-y-x-123[abxyz]"))
+; (insta/visualize  (room-parser "aaaaa-bbb-z-y-x-123[abxyz]"))
+
+; Now we need to parse the entire input. We saved it in the project root directory as as file called "day04input":
+
+(def rooms (str (slurp (io/resource "day04input"))))
