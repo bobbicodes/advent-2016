@@ -1,18 +1,15 @@
 (ns advent.core
-  (:require
-   [advent-of-clojure-2016.utils :as u]
-   [clojure.set :refer [difference]]
-   [clojure.java.io :as io]
-   [clojure.string :as string]))
+  (:require [instaparse.core :as insta]
+            [clojure.java.io :as io]))
 
 ; Just start with creating a parser for this:
 
-(def bots "bot 147 gives low to bot 67 and high to bot 71")
+(def bots (str (slurp (io/resource "day10input"))))
 
 (def bot-parser
   (insta/parser
     "handoff = bot+
-     bot = 'bot ' id <word*>
+     bot = word id <word*>
      word = #'[a-zA-Z]+' whitespace
      whitespace = #'\\s+'
      id = #'[0-9]+' whitespace?"))
