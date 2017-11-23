@@ -16,6 +16,14 @@
 ; start at location l = [0 0]
 ; direction d = 1 (North)
 
+(def step-parser
+  (insta/parser
+   "<step> = (direction steps)+
+    <direction> = #'[a-zA-Z]+'
+    <steps> = #'[0-9]+' <', '?>"))
+
+(def steps (str (slurp (io/resource "day01input"))))
+
 (step-parser steps)
 ;=> ("R" "2" "L" "3" "R" . . . )
 
