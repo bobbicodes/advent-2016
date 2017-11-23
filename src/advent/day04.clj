@@ -34,3 +34,5 @@ aaaaa-bbb-z-y-x-123[abxyz]
 ; Now we need to parse the entire input. We saved it in the project root directory as as file called "day04input":
 
 (def rooms (str (slurp (io/resource "day04input"))))
+
+

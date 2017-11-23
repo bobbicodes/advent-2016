@@ -38,31 +38,16 @@ turns
 steps
 ;=> ("2" "3" "2" "4" "2" . . .)
 
-
-; Our direction begins at 1 which is north. 
-; Our coordinates are [0 0].
 ; Our first instruction is ("R" "2"),
 ; which means our current direction (1) becomes 2.
 ; when our direction is 2, our steps increment x,
 ; so [0 0] becomes [2 0].
 
-; (remember:)
-; 1 - north, increment y
-; 2 - east, increment x
-; 3 - south, decrement y
-; 4 - west, decrement x
 
-; We will create a loop with local bindings for
-; direction d and location l.
-
-(loop [d 1 l [0 0]])
-
-; first thing we grab is an "R", so we inc d.
-; then we receive a "2", so first we need to convert it into an integer.
-
-; since d is at 2, we inc the x of l by (read-string "2")
-; Let's write out our movements as functions:
-; it will take a vector of coordinates and a number
+; 1 - north, increment y of l
+; 2 - east, increment x of l
+; 3 - south, decrement y of l
+; 4 - west, decrement x of l
 
 (defn go-north [l n]
   (vector (first l)
@@ -77,18 +62,25 @@ steps
   (vector (- (first l) n)
           (last l)))
 
-; Great! Each func modifies the coordinates appropriately.
-
-; we pull a number from the directions, adjust d, modulo 4 and call one of the above, just a 4-way spinner.
-(defn step [l n d]
+(defn step [n])
+(loop [d 1 l [0 0] t turns s steps]
   (cond (= d 1) (go-north l n)
         (= d 2) (go-east l n)
         (= d 3) (go-south l n)
         (= d 4) (go-west l n)))
 
+; first thing we grab is an "R", so we inc d.
+; then we receive a "2", so first we need to convert it into an integer.
 
+; since d is at 2, we inc the x of l by (read-string "2")
+; Let's write out our movements as functions:
+; it will take a vector of coordinates and a number
 
-; This returns our new coordinates, which we can pass with [0 0] to our manhattan distance function.  
+; Great! Each func modifies the proper coordinate.
+; we pull a number from the directions, adjust d, modulo 4 and call one of the above, just a 4-way spinner.
+
+; This returns our new coordinates.
+; repeat until end of lists, and pass the final set with [0 0] to our manhattan distance function.  
 
 (defn bunny [u v]
   (reduce +
