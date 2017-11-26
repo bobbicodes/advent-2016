@@ -34,7 +34,7 @@
 ; an "L" will decrement it.
 ; divide it by 4 and take the remainder to determine current direction. we will bind this as a local variable as we iterate through the steps.
 
-; The output from our parser is a seq of alternating turns and steps. We could pop them off 2 at a time to modify a set of coordinates according to their values, but I kinda would rather split it into 2 lists, "turns" (letters) and "steps" (numbers). 
+; The output from our parser is a seq of alternating turns and steps. We could pop them off 2 at a time to modify a set of coordinates according to their values, but I kinda would rather split it into 2 lists, "turns" (letters) and "steps" (numbers).
 
 (def turns (first (#(apply map list (partition 2 %)) (step-parser steps))))
 
@@ -70,12 +70,41 @@ steps
   (vector (- (first l) n)
           (last l)))
 
-(defn step [n])
-(loop [d 1 l [0 0] t turns s steps]
-  (cond (= d 1) (go-north l n)
-        (= d 2) (go-east l n)
-        (= d 3) (go-south l n)
-        (= d 4) (go-west l n)))
+; What we need is a function that
+; takes the 2 lists, turns and steps,
+; and iterates through them both.
+; it's gonna take as input the 2 lists,
+; direction d and location l.
+
+
+(defn turner [t d]
+; this will take the list of turns,
+; and our current direction, 
+; and modify d according to
+; the first of t.
+  (if (= "R" (first t))
+; to account for the case where d = 4
+; we need to inc then mod to get 1.
+    (mod (inc d) 4)
+; in the case that d = 1    )
+  )
+
+(defn step [n]
+  (loop [d 1 l [0 0] t turns s steps]
+    (if (next t)
+      (recur
+
+; here we reset bindings for next loop:
+; we need to take the first of turns,
+; and use its value to modify d.
+; then we use d to modify l.
+
+       (cond (= d 1) (go-north l n)
+                   (= d 2) (go-east l n)
+                   (= d 3) (go-south l n)
+                   (= d 4) (go-west l n))))))
+      
+    
 
 ; first thing we grab is an "R", so we inc d.
 ; then we receive a "2", so first we need to convert it into an integer.
@@ -88,7 +117,7 @@ steps
 ; we pull a number from the directions, adjust d, modulo 4 and call one of the above, just a 4-way spinner.
 
 ; This returns our new coordinates.
-; repeat until end of lists, and pass the final set with [0 0] to our manhattan distance function.  
+; repeat until end of lists, and pass the final set with [0 0] to our manhattan distance function.
 
 (defn bunny [u v]
   (reduce +
